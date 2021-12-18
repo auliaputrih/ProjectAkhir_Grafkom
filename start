@@ -1,0 +1,721 @@
+import OpenGL.GL
+import OpenGL.GLUT
+import OpenGL.GLU
+print("Sukses Import OpenGL!")
+
+from OpenGL.GL import *
+from OpenGL.GLUT import *
+from OpenGL.GLU import *
+from math import *
+
+mulai = 0
+tombol_mulai = True
+
+
+def kotak_mulai():
+    glPushMatrix()
+    glBegin(GL_QUADS)
+    glColor3ub(235, 137, 52)
+    glVertex2f(200, 0) #A
+    glVertex2f(600, 0) #B
+    glVertex2f(600, 200) #C
+    glVertex2f(200, 200) #D
+    glEnd()
+    glPopMatrix()
+
+def kotak_keluar():
+    glPushMatrix()
+    glBegin(GL_QUADS)
+    glColor3ub(235, 137, 52)    
+    glVertex2f(800, 0) #E
+    glVertex2f(1200, 0) #F
+    glVertex2f(1200, 200) #G
+    glVertex2f(800, 200) #H
+    glEnd()
+    glPopMatrix()
+
+def hurufP():
+    #lengkungan luar
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)
+    glVertex2f(220, 180) #J
+    glVertex2f(234, 180) #I13
+    glVertex2f(246, 178) #L13
+    glVertex2f(257, 173) #K13
+    glVertex2f(269, 162) #J13
+    glVertex2f(276, 150) #M13
+    glVertex2f(280, 134) #N13
+    glVertex2f(280, 120) #O13
+    glVertex2f(275, 106) #P13
+    glVertex2f(269, 97) #Q13
+    glVertex2f(256, 86) #R13
+    glVertex2f(240, 80) #L
+    glVertex2f(240, 20) #K
+    glVertex2f(220, 20) #I
+    glEnd()
+    glPopMatrix()
+
+def hurufPdalam():
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 137, 52)
+    
+    #lengkungan dalam
+    glVertex2f(240, 160) #N
+    glVertex2f(255, 155) #Z13
+    glVertex2f(264, 147) #W13
+    glVertex2f(268, 138) #V13
+    glVertex2f(268, 121) #U13
+    glVertex2f(259, 107) #T13
+    glVertex2f(247, 100) #S13
+    glVertex2f(240, 100) #M
+    glEnd()
+    glPopMatrix()
+
+def hurufL():
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)
+    glVertex2f(300, 20) #P
+    glVertex2f(380, 20) #Q
+    glVertex2f(380, 40) #R
+    glVertex2f(320, 40) #S
+    glVertex2f(320, 180) #T
+    glVertex2f(300, 180) #O
+    glEnd()
+    glPopMatrix()
+
+def hurufA():
+    glPushMatrix()
+    #A luar
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)
+    glVertex2f(400, 20) #U
+    glVertex2f(420, 20) #V
+    glVertex2f(430, 40) #A1
+    glVertex2f(450, 40) #B1
+    glVertex2f(460, 20) #W
+    glVertex2f(480, 20) #Z
+    glVertex2f(440, 180) #F1
+    glEnd()
+    glPopMatrix()
+
+def hurufAdalam():
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 137, 52)   
+
+    #A dalam
+    glVertex2f(435, 60) #C1
+    glVertex2f(445, 60) #D1
+    glVertex2f(440, 140) #E1
+    glEnd()
+    glPopMatrix()
+
+def hurufY():
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)
+    glVertex2f(530, 19) #L1
+    glVertex2f(550, 19) #M1
+    glVertex2f(549, 79) #N1
+    glVertex2f(580, 180) #J1
+    glVertex2f(560, 180) #I1
+    glVertex2f(540, 120) #K1
+    glVertex2f(520, 180) #H1
+    glVertex2f(500, 180) #G1
+    glEnd()
+    glPopMatrix()
+
+def hurufE():
+    #atas
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)
+    glVertex2f(820, 180) #Q1
+    glVertex2f(900, 180) #R1
+    glVertex2f(900, 160) #S1
+    glVertex2f(840, 160) #T1
+    glVertex2f(820, 160) #penambah
+    glEnd()
+    glPopMatrix()
+
+    glPushMatrix()
+    #samping1
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)
+    glVertex2f(840, 160) #T1
+    glVertex2f(820, 160) #penambah
+    glVertex2f(820, 105) #penambah
+    glVertex2f(840, 105) #U1
+    glEnd()
+    glPopMatrix()
+
+    #tengah
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)
+    glVertex2f(840, 105) #U1
+    glVertex2f(820, 105) #penambah
+    glVertex2f(820, 89) #penambah
+    glVertex2f(840, 89) #B2
+    glVertex2f(899, 89) #C2
+    glVertex2f(899, 105) #V1
+    glEnd()
+    glPopMatrix()
+
+    #samping2
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)
+    glVertex2f(840, 89) #B2
+    glVertex2f(820, 89) #penambah
+    glVertex2f(820, 20) #P1
+    glVertex2f(840, 20)
+    glEnd()
+    glPopMatrix()
+
+    #bawah
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)  
+    glVertex2f(820, 40) #penambah
+    glVertex2f(840, 40) #A2
+    glVertex2f(900, 40) #Z1
+    glVertex2f(900, 20) #W1
+    glVertex2f(820, 20) #P1
+    glEnd()
+    glPopMatrix()
+
+def hurufX():
+    #bagian atas
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)  
+    glVertex2f(940, 100) #N2
+    glVertex2f(920, 180) #I2
+    glVertex2f(940, 180) #J2
+    glVertex2f(960, 120) #K2
+    glVertex2f(980, 180) #L2
+    glVertex2f(1000, 180) #M2
+    glVertex2f(980, 100) #O2
+    glEnd()
+    glPopMatrix()
+
+    #bagian bawah
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)  
+    glVertex2f(940, 100) #N2
+    glVertex2f(920, 20) #D2
+    glVertex2f(940, 20) #E2
+    glVertex2f(960, 80) #F2
+    glVertex2f(980, 20) #G2
+    glVertex2f(1000, 20) #H2
+    glVertex2f(980, 100) #O2
+    glEnd()
+    glPopMatrix()
+
+def hurufI():
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)  
+    glVertex2f(1020, 20) #S2
+    glVertex2f(1060, 20) #R2
+    glVertex2f(1060, 180) #Q2
+    glVertex2f(1020, 180) #P2
+    glEnd()
+    glPopMatrix()
+    
+def hurufT():
+    #penutup
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)   
+    glVertex2f(1080, 180) #T2
+    glVertex2f(1180, 180) #U2
+    glVertex2f(1180, 160) #V2
+    glVertex2f(1080, 160) #Z2
+    glEnd()
+    glPopMatrix()
+
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)  
+    glVertex2f(1120, 160) #A2
+    glVertex2f(1120, 20) #B3
+    glVertex2f(1140, 20) #C3
+    glVertex2f(1140, 160) #W2
+    glEnd()
+    glPopMatrix()
+
+def hurufM():
+    #samping kiri
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)     
+    glVertex2f(400, 300) #D3
+    glVertex2f(400, 500) #E3
+    glVertex2f(450, 500) #F3
+    glVertex2f(450, 300) #O3
+    glEnd()
+    glPopMatrix()
+    
+    #miring kiri
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)   
+    glVertex2f(450, 500) #F3
+    glVertex2f(500, 400) #G3
+    glVertex2f(500, 300) #M3
+    glVertex2f(450, 400) #N3
+    glEnd()
+    glPopMatrix()
+
+    #miring kanan
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)  
+    glVertex2f(500, 400) #G3
+    glVertex2f(550, 500) #H3
+    glVertex2f(550, 400) #L3
+    glVertex2f(500, 300) #M3
+    glEnd()
+    glPopMatrix()
+
+    #samping kanan
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)   
+    glVertex2f(550, 500) #H3
+    glVertex2f(600, 500) #I3
+    glVertex2f(600, 300) #J3
+    glVertex2f(550, 300) #K3
+    glVertex2f(550, 400) #L3
+    glEnd()
+    glPopMatrix()
+
+def hurufA1():
+    #A dalam
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3f(0, 0, 0)
+    glVertex2f(725, 369) #Z3
+    glVertex2f(773, 369) #A4
+    glVertex2f(750, 450) #W3
+    glEnd()
+    glPopMatrix()
+
+    #A samping kiri
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)   
+    glVertex2f(750, 500) #V3
+    glVertex2f(650, 300) #P3
+    glVertex2f(700, 300) #Q3
+    glVertex2f(725, 349) #R3
+    glVertex2f(774, 349) #S3
+    glEnd()
+    glPopMatrix()
+
+    #A samping kanan
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)   
+    glVertex2f(774, 349) #S3
+    glVertex2f(800, 300) #T3
+    glVertex2f(850, 300) #U3
+    glVertex2f(750, 500) #V3
+    glEnd()
+    glPopMatrix()
+
+def hurufA1dalam():
+    #A dalam
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3f(0, 0, 0)
+    glVertex2f(725, 369) #Z3
+    glVertex2f(773, 369) #A4
+    glVertex2f(750, 450) #W3
+    glEnd()
+    glPopMatrix()
+
+def hurufT1():
+    #atas
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)  
+    glVertex2f(900, 450) #C4
+    glVertex2f(1050, 450) #H4
+    glVertex2f(1050, 500) #I4
+    glVertex2f(900, 500) #B4
+    glEnd()
+    glPopMatrix()
+
+    #tiang
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)  
+    glVertex2f(950, 450) #D4
+    glVertex2f(950, 300) #E4
+    glVertex2f(1000, 300) #F4
+    glVertex2f(1000, 450) #G4
+    glEnd()
+    glPopMatrix()
+
+def hurufC(): 
+    #C luar
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)     
+    glVertex2f(1200, 450) #M4 
+    glVertex2f(1200, 500) #K4
+    glVertex2f(1162, 492) #U12
+    glVertex2f(1135, 476) #V12
+    glVertex2f(1117, 457) #W12
+    glVertex2f(1102, 424) #Z12
+    glVertex2f(1100, 388) #A13
+    glVertex2f(1110, 356) #B13
+    glVertex2f(1127, 331) #C13
+    glVertex2f(1158, 308) #D13
+    glVertex2f(1200, 300) #J4
+    glVertex2f(1200, 350) #L4
+    glEnd()   
+    glPopMatrix()
+
+def hurufCdalam():
+    #C dalam
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(0, 0, 0)
+    glVertex2f(1200, 450) #M4
+    glVertex2f(1169, 439) #H13
+    glVertex2f(1153, 417) #G13
+    glVertex2f(1151, 386) #F13
+    glVertex2f(1168, 361) #E13
+    glVertex2f(1200, 350) #L4
+    glEnd()
+    glPopMatrix()
+
+def HurufH():
+    #samping kiri
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)  
+    glVertex2f(1250, 500) #N4
+    glVertex2f(1250, 300) #O4
+    glVertex2f(1300, 300) #P4
+    glVertex2f(1300, 500) #A5
+    glEnd()
+    glPopMatrix()
+
+    #tengah
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)  
+    glVertex2f(1300, 424) #Z4
+    glVertex2f(1300, 373) #Q4
+    glVertex2f(1348, 373) #R4
+    glVertex2f(1348, 424) #W4
+    glEnd()
+    glPopMatrix()
+
+    #samping kanan
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)  
+    glVertex2f(1350, 500) #V4
+    glVertex2f(1350, 300) #S4
+    glVertex2f(1400, 300) #T4
+    glVertex2f(1400, 500) #U4
+    glEnd()
+    glPopMatrix()
+
+def hurufC1():
+    #C luar
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)  
+    glVertex2f(250, 800) #C5
+    glVertex2f(234, 798) #P7
+    glVertex2f(214, 793) #E6
+    glVertex2f(192, 781) #F6
+    glVertex2f(176, 767) #G6
+    glVertex2f(161, 746) #H6
+    glVertex2f(154, 730) #J6
+    glVertex2f(150, 713) #I6
+    glVertex2f(150, 696) #K6
+    glVertex2f(151, 682) #L6
+    glVertex2f(154, 669) #M6
+    glVertex2f(167, 643) #O6
+    glVertex2f(188, 621) #Q6
+    glVertex2f(209, 608) #S6
+    glVertex2f(250, 600) #B5
+    glEnd()
+    glPopMatrix()
+
+def hurufC1dalam():
+    #C dalam
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(0, 0, 0)  
+    glVertex2f(250, 750) #E5
+    glVertex2f(226, 744) #Z4
+    glVertex2f(208, 728) #B7
+    glVertex2f(200, 708) #D7
+    glVertex2f(203, 682) #F7
+    glVertex2f(220, 660) #H7
+    glVertex2f(250, 650) #D5
+    glEnd()
+    glPopMatrix()
+
+def hurufO():
+    #O luar
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)  
+    glVertex2f(400, 800) #G5
+    glVertex2f(380, 798) #E8
+    glVertex2f(360, 791) #F8
+    glVertex2f(345, 783) #G8
+    glVertex2f(333, 774) #H8
+    glVertex2f(323, 764) #I8
+    glVertex2f(312, 749) #J8
+    glVertex2f(306, 735) #K8
+    glVertex2f(301, 719) #L8
+    glVertex2f(300, 704) #M8
+    glVertex2f(300, 686) #N8
+    glVertex2f(304, 669) #O8
+    glVertex2f(311, 653) #P8
+    glVertex2f(320, 640) #Q8
+    glVertex2f(329, 629) #R8
+    glVertex2f(340, 620) #S8
+    glVertex2f(353, 611) #T8
+    glVertex2f(366, 605) #U8
+    glVertex2f(383, 601) #V8
+    glVertex2f(400, 600) #F5
+    glVertex2f(419, 601) #Q9
+    glVertex2f(428, 604) #P9
+    glVertex2f(444, 610) #O9
+    glVertex2f(456, 617) #N9
+    glVertex2f(468, 626) #M9
+    glVertex2f(480, 640) #L9
+    glVertex2f(487, 651) #K9
+    glVertex2f(498, 680) #I9
+    glVertex2f(499, 709) #G9
+    glVertex2f(495, 729) #F9
+    glVertex2f(488, 747) #E9
+    glVertex2f(472, 768) #C9
+    glVertex2f(448, 787) #A9
+    glVertex2f(432, 794) #Z8
+    glVertex2f(400, 800) #G5
+    glEnd()
+    glPopMatrix()
+
+def hurufOdalam():
+    #O dalam
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(0, 0, 0)  
+    glVertex2f(400, 750) #I5
+    glVertex2f(370, 740) #K7
+    glVertex2f(351, 712) #M7
+    glVertex2f(357, 674) #O7
+    glVertex2f(381, 653) #R7
+    glVertex2f(400, 650) #H5
+    glVertex2f(426, 657) #C8
+    glVertex2f(442, 673) #A8
+    glVertex2f(449, 698) #W7
+    glVertex2f(440, 728) #U7
+    glVertex2f(417, 746) #S7
+    glEnd()
+    glPopMatrix()
+
+def hurufL1():
+    #tiang
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)  
+    glVertex2f(550, 800) #J5
+    glVertex2f(550, 600) #K5
+    glVertex2f(600, 600) #penambah
+    glVertex2f(600, 800) #O5
+    glEnd()
+    glPopMatrix()
+
+    #bawah
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)  
+    glVertex2f(600, 650) #N5
+    glVertex2f(600, 600) #penambah
+    glVertex2f(700, 600) #L5
+    glVertex2f(700, 650) #M5
+    glEnd()
+    glPopMatrix()
+
+def hurufO1():
+    #luar
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)    
+    glVertex2f(850, 800) #Q5
+    glVertex2f(820, 795) #M10
+    glVertex2f(794, 783) #O10
+    glVertex2f(768, 758) #Q10
+    glVertex2f(754, 730) #S10
+    glVertex2f(750, 698) #U10
+    glVertex2f(755, 666) #W10
+    glVertex2f(772, 636) #A11
+    glVertex2f(794, 616) #C11
+    glVertex2f(819, 604) #E11
+    glVertex2f(850, 600) #P5
+    glVertex2f(882, 605) #A12
+    glVertex2f(904, 616) #W11
+    glVertex2f(923, 631) #U11
+    glVertex2f(938, 653) #S11
+    glVertex2f(948, 682) #Q11
+    glVertex2f(949, 709) #O11
+    glVertex2f(937, 748) #M11
+    glVertex2f(920, 771) #K11
+    glVertex2f(898, 787) #I11
+    glVertex2f(868, 798) #G11
+    glEnd() 
+    glPopMatrix()
+
+def hurufO1dalam():
+    #dalam
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(0, 0, 0)  
+    glVertex2f(850, 750) #S5
+    glVertex2f(820, 740) #S9
+    glVertex2f(802, 714) #U9
+    glVertex2f(802, 685) #W9
+    glVertex2f(820, 660) #A10
+    glVertex2f(863, 651) #C10
+    glVertex2f(892, 673) #E10
+    glVertex2f(899, 708) #G10
+    glVertex2f(885, 735) #I10
+    glVertex2f(873, 744) ##J10
+    glVertex2f(861, 748) #K10
+    glEnd()
+    glPopMatrix()
+
+def hurufR():
+    #lengkungan luar
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)  
+    glVertex2f(1000, 800) #V5
+    glVertex2f(1014, 809) #C12
+    glVertex2f(1033, 816) #D12
+    glVertex2f(1053, 817) #E12
+    glVertex2f(1069, 815) #F12
+    glVertex2f(1083, 810) #G12
+    glVertex2f(1100, 800) #H12
+    glVertex2f(1116, 784) #J12
+    glVertex2f(1125, 767) #K12
+    glVertex2f(1130, 746) #L12
+    glVertex2f(1130, 725) #M12
+    glVertex2f(1125, 707) #N12
+    glVertex2f(1114, 688) #O12
+    glVertex2f(1101, 674) #B6
+    glEnd()
+    glPopMatrix()
+
+    #bawah
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(235, 64, 52)  
+    glVertex2f(1000, 800) #V5
+    glVertex2f(1000, 600) #U5
+    glVertex2f(1050, 600) #T5
+    glVertex2f(1050, 673) #W5
+    glVertex2f(1100, 600) #Z5
+    glVertex2f(1150, 600) #A6
+    glVertex2f(1101, 674) #B6
+    glEnd()
+    glPopMatrix()
+
+def hurufRdalam():
+    #lengkungan dalam
+    glPushMatrix()
+    glBegin(GL_POLYGON)
+    glColor3ub(0, 0, 0)  
+    glVertex2f(1050, 774) #D6
+    glVertex2f(1068, 770) #P12
+    glVertex2f(1082, 756) #Q12
+    glVertex2f(1086, 728) #R12
+    glVertex2f(1078, 713) #S12
+    glVertex2f(1050, 700) #C6
+    glEnd()
+    glPopMatrix()
+
+def iniHandleMouse(button, state, x, y):
+    global mulai
+    global tombol_mulai
+    if tombol_mulai == GLUT_LEFT_BUTTON and state == GLUT_DOWN:
+        if Start == True:
+            print("Klik Kanan ditekan ", "(", x, ",", y, ")")
+    elif button == GLUT_LEFT_BUTTON and state == GLUT_DOWN:
+        if Start == False:
+            exit(0)
+        print("Klik Kiri ditekan ", "(", x, ",", y, ")")
+
+def iterate():
+    glViewport(25, 75, 350, 350) 
+    glMatrixMode(GL_PROJECTION)
+    glLoadIdentity()
+    glOrtho(0.0, 1450, 0.0, 850, 0.0, 1.0)
+    glMatrixMode (GL_MODELVIEW)
+    glLoadIdentity()
+
+
+def showScreen():
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT) #untuk membersihkan layar
+    glLoadIdentity() #untuk mereset semua posisi grafik stsu bentuk
+    iterate() #fungsi looping
+    kotak_mulai()
+    kotak_keluar()
+    hurufP()
+    hurufPdalam()
+    hurufL()
+    hurufA()
+    hurufAdalam()
+    hurufY()
+    hurufE()
+    hurufX()
+    hurufI()
+    hurufT()
+    hurufM()
+    hurufA1()
+    hurufA1dalam()
+    hurufT1()
+    hurufC()
+    hurufCdalam()
+    HurufH()
+    hurufC1()
+    hurufC1dalam()
+    hurufO()
+    hurufOdalam()
+    hurufL1()
+    hurufO1()
+    hurufO1dalam()
+    hurufR()
+    hurufRdalam()
+    glutSwapBuffers() #untuk membersihkan layar
+
+def main():
+    glutInit(sys.argv)
+    glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB)
+    glutInitWindowSize(550, 550)
+    glutInitWindowPosition(0, 0)
+    glutCreateWindow("START") #untuk memberi nama pada window
+    glutDisplayFunc(showScreen) #untuk menampilkan object yang telah dibuat pada layar, fungsi callback
+    glutIdleFunc(showScreen) #membuat opengl terbuka dan menampilkan objek
+    glutMouseFunc(iniHandleMouse)
+    glutMainLoop()
+
+main()
